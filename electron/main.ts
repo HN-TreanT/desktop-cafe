@@ -6,7 +6,7 @@ import MenuBuilder from './menu';
 function createWindow() {
   const win = new BrowserWindow({
     // titleBarStyle:"hidden",
-    width:1370,
+    width:1500,
     height:750,
     resizable:false,
     transparent:true,

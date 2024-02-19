@@ -32,9 +32,11 @@ const ItemOrder: React.FC<any> = ({ style, data }) => {
     timeOrders = `${Math.floor(time)} ngày`;
   }
   return (
-    <div  className={`card-item-order ${style}`}>
+    <div className={`card-item-order ${style}`}>
       <div className="title-item-order">
-        <div style={{ marginLeft: "15px", display:"flex", alignItems:'center' }}>
+        <div
+          style={{ marginLeft: "15px", display: "flex", alignItems: "center" }}
+        >
           <FontAwesomeIcon
             style={{
               padding: "5px",
@@ -43,55 +45,74 @@ const ItemOrder: React.FC<any> = ({ style, data }) => {
             }}
             icon={faBellConcierge}
           />
-          <span style={{ paddingLeft: "50px", fontWeight: "600" }}>MTA Coffee        
-        {/* {
+          <span style={{ paddingLeft: "50px", fontWeight: "600" }}>
+            MTA Coffee
+            {/* {
           data?.time_pay ? <Tag color="green">Đã thanh toán</Tag> : <Tag color="red">Chưa thanh toán</Tag>
         } */}
-         </span>
-         <Checkbox  checked={data?.time_pay ? true : false} style={{marginLeft:"auto", marginRight:"5px"}}/>
+          </span>
+          <Checkbox
+            checked={data?.time_pay ? true : false}
+            style={{ marginLeft: "auto", marginRight: "5px" }}
+          />
         </div>
       </div>
       <div className="content-item-order">
-        <div className="table-card-item-order" style={{wordBreak:"break-all"}}>
-                 {
-                  Array.isArray(data?.tablefood_invoices) ? data.tablefood_invoices.map((item: any) => item?.id_table).join(",") : ""
-                 }
-               
+        <div
+          className="table-card-item-order"
+          style={{ wordBreak: "break-all" }}
+        >
+          {Array.isArray(data?.tablefood_invoices)
+            ? data.tablefood_invoices
+                .map((item: any) => item?.id_table)
+                .join(",")
+            : ""}
         </div>
-     
-        
+
         <div className="side-bar-item-order">
           <div className="time-countcustomer">
             <Row gutter={[10, 10]}>
               <Col span={24}>
-                <span >
-                  <FontAwesomeIcon className="icon-time-customer" icon={faClock} />
+                <span>
+                  <FontAwesomeIcon
+                    className="icon-time-customer"
+                    icon={faClock}
+                  />
                   {timeOrders}
                 </span>
               </Col>
               <Col span={24}>
                 <span>
-                    <DollarCircleFilled
+                  <DollarCircleFilled
                     style={{
                       paddingRight: "7px",
                       color: "rgba(0, 0, 0, 0.308)",
                       fontSize: "1rem",
-                    }} rev={undefined}                      />
-                    <span style={{ fontWeight: "500" }}>
-                      {" "}
-                      {data?.price < 1000000
-                        ? `${data?.price ?convertPrice(data.price) : 0} `
-                        : ` ${data?.price ? Math.round(data?.price / 10000) / 100 : 0} tr(VNĐ)`}
-                    </span>
+                    }}
+                    rev={undefined}
+                  />
+                  <span style={{ fontWeight: "500" }}>
+                    {" "}
+                    {data?.price < 1000000
+                      ? `${data?.price ? convertPrice(data.price) : 0} `
+                      : ` ${
+                          data?.price
+                            ? Math.round(data?.price / 10000) / 100
+                            : 0
+                        } tr(VNĐ)`}
+                  </span>
                 </span>
               </Col>
             </Row>
           </div>
-          <div className="price-item-order">             
-              {
-                data?.status === 1 ? <Tag color="green">Hoàn thành</Tag> : data?.status === 2 ? <Tag color="red">Đã hủy</Tag> 
-                : <Tag color="orange">Đang thực hiện</Tag>
-              }
+          <div className="price-item-order">
+            {data?.status === 1 ? (
+              <Tag color="green">Đang dùng bữa</Tag>
+            ) : data?.status === 2 ? (
+              <Tag color="red">Đã hủy</Tag>
+            ) : (
+              <Tag color="orange">Đang thực hiện</Tag>
+            )}
           </div>
           {/* <div className="price-item-order">             
               {
