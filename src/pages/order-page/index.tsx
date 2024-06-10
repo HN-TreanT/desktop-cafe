@@ -21,14 +21,14 @@ const OrderPage: React.FC = () => {
     socket.connect()
  }, [socket])
  socket.off("announce_success").on("announce_success", function (data: any) {
-  if(data?.message === "success") {
+  // if(data?.message === "success") {
     messageApi.success(`Yêu cầu mã #${data?.id_invoice} hoàn thành` )
     dispatch(actions.InvoiceActions.loadData({
       page: 1,
       size: 6,  
       //thanh_toan: "chua"
     }))
-} 
+// } 
  })
  
   const handlLogout = () => {

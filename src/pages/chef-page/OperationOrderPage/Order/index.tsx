@@ -30,7 +30,7 @@ const Order: React.FC = () => {
 
       
     socket.off("change_order_success").on("change_order_success", function (data: any) {
-      if (data?.status) {
+      // if (data?.status) {
         dispatch(actions.InvoiceActions.loadData({
           page: currentPage,
           size: 6,  
@@ -38,7 +38,7 @@ const Order: React.FC = () => {
           status: [0]
         }))
         messageApi.warning(`Bàn ${data?.table} thay đổi`)
-      }
+      // }
     })
 
   
