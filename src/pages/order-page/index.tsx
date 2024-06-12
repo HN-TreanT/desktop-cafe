@@ -234,7 +234,7 @@ const OrderPage: React.FC = () => {
         </Row>
         <Dropdown menu={{ items }} trigger={["click"]}>
           <div className="user-order-page">
-            <span className="name-user-order-page">Hoàng Nam</span>
+            <span className="name-user-order-page">{userInfo?.name || ""}</span>
             <UserOutlined className="icon-user-order-page" rev={undefined} />
           </div>
         </Dropdown>
